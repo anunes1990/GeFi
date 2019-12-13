@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goContas(view: View){
-        var intent = Intent(this, ContasActivity::class.java).apply {
+        var intent = Intent(this, ComprasCartaoActivity::class.java).apply {
             putExtra("msg", "Navegação Contas Bombando")
         }
         startActivityForResult(intent, 1)

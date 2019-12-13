@@ -14,7 +14,7 @@ import com.senacrs.gefi.daos.CompraDao
 import com.senacrs.gefi.database.AppDatabase
 import com.senacrs.gefi.model.Compra
 
-class ContaExplodeActivity : AppCompatActivity() {
+class ListaComprasActivity : AppCompatActivity() {
     private var listaCompras: ArrayList<Compra> = ArrayList()
     private var idCartao : String? = ""
 
@@ -27,7 +27,7 @@ class ContaExplodeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_conta_explode)
+        setContentView(R.layout.activity_lista_compras)
 
         db = Room.databaseBuilder(this, AppDatabase::class.java, "myDB")
             .allowMainThreadQueries().build()

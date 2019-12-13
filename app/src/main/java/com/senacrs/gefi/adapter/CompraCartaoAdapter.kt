@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.senacrs.gefi.R
 import com.senacrs.gefi.model.Cartao
 
-class ContasAdapter (private var listaContas:ArrayList<Cartao>) : RecyclerView.Adapter<ContasAdapter.ContasHolder>(){
+class CompraCartaoAdapter (private var listaContas:ArrayList<Cartao>) : RecyclerView.Adapter<CompraCartaoAdapter.ContasHolder>(){
 
     class ContasHolder : RecyclerView.ViewHolder {
         var txtIdCartao: TextView
@@ -24,9 +24,9 @@ class ContasAdapter (private var listaContas:ArrayList<Cartao>) : RecyclerView.A
     }
 
     override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): ContasAdapter.ContasHolder {
+                                    viewType: Int): CompraCartaoAdapter.ContasHolder {
         val view = LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.conta, parent, false) as View
+            .inflate(R.layout.compra_cartao, parent, false) as View
         return ContasHolder(view)
     }
 

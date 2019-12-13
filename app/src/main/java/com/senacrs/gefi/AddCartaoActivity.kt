@@ -11,7 +11,6 @@ import androidx.room.Room
 import com.senacrs.gefi.daos.CartaoDao
 import com.senacrs.gefi.database.AppDatabase
 import com.senacrs.gefi.model.Cartao
-import kotlin.random.Random
 
 class AddCartaoActivity : AppCompatActivity() {
 

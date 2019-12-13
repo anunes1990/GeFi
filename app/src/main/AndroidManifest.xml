@@ -11,9 +11,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".AddCartaoActivity"></activity>
         <activity android:name=".AddCompraActivity" />
-        <activity android:name=".ContaExplodeActivity" />
+        <activity android:name=".ListaComprasActivity" />
         <activity android:name=".CartoesActivity" />
-        <activity android:name=".ContasActivity" />
+        <activity android:name=".ComprasCartaoActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

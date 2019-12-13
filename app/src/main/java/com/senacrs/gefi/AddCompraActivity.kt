@@ -11,7 +11,6 @@ import androidx.room.Room
 import com.senacrs.gefi.daos.CartaoDao
 import com.senacrs.gefi.daos.CompraDao
 import com.senacrs.gefi.database.AppDatabase
-import com.senacrs.gefi.model.Cartao
 import com.senacrs.gefi.model.Compra
 
 class AddCompraActivity : AppCompatActivity() {

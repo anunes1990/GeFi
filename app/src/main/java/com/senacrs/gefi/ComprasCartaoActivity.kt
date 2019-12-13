@@ -8,12 +8,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
-import com.senacrs.gefi.adapter.ContasAdapter
+import com.senacrs.gefi.adapter.CompraCartaoAdapter
 import com.senacrs.gefi.daos.CartaoDao
 import com.senacrs.gefi.database.AppDatabase
 import com.senacrs.gefi.model.Cartao
 
-class ContasActivity : AppCompatActivity() {
+class ComprasCartaoActivity : AppCompatActivity() {
     private var listaCartoes: ArrayList<Cartao> = ArrayList()
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
@@ -24,13 +24,13 @@ class ContasActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_contas)
+        setContentView(R.layout.activity_compra_cartao)
         db = Room.databaseBuilder(this, AppDatabase::class.java, "myDB")
             .allowMainThreadQueries().build()
         dao = db?.cartaoDao()
 
         viewManager = LinearLayoutManager(this)
-        viewAdapter = ContasAdapter(listaCartoes)
+        viewAdapter = CompraCartaoAdapter(listaCartoes)
 
         recyclerView = findViewById<RecyclerView>(R.id.recyclerViewContas).apply {
             setHasFixedSize(true)
@@ -44,7 +44,7 @@ class ContasActivity : AppCompatActivity() {
     }
 
     fun goExplode(view:View){
-        var intent = Intent(this, ContaExplodeActivity::class.java).apply {
+        var intent = Intent(this, ListaComprasActivity::class.java).apply {
             putExtra("idCartao", view.findViewById<TextView>(R.id.txtIdCartao).getText().toString())
         }
         startActivityForResult(intent, 1)

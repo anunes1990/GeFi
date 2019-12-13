@@ -1,7 +1,6 @@
 package com.senacrs.gefi.daos
 
 import androidx.room.*
-import com.senacrs.gefi.model.Cartao
 import com.senacrs.gefi.model.Compra
 
 @Dao
