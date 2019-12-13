@@ -45,12 +45,20 @@ class ComprasCartaoActivity : AppCompatActivity() {
         viewAdapter.notifyDataSetChanged()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityReenter(resultCode, data)
+        listaCartoes.removeAll(listaCartoes)
+
+        val retorno: List<Cartao>? = dao?.cartoesFindAll()
+        retorno?.map { r -> listaCartoes.add(r) }
+        viewAdapter.notifyDataSetChanged()
+    }
+
     fun goExplode(view:View){
         var intent = Intent(this, ListaComprasActivity::class.java).apply {
             putExtra("idCartao", view.findViewById<TextView>(R.id.txtIdCartao).getText().toString())
         }
         startActivityForResult(intent, 1)
     }
-
 
 }

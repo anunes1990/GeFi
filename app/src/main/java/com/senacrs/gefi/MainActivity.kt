@@ -4,13 +4,47 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import androidx.room.Room
+import com.senacrs.gefi.daos.CartaoDao
+import com.senacrs.gefi.database.AppDatabase
+import com.senacrs.gefi.model.Cartao
 
 class MainActivity : AppCompatActivity() {
+    var db: AppDatabase? = null
+    var dao: CartaoDao? = null
+    var cartoes: List<Cartao>? = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar!!.title = "GeFi - Gestão Financeira"
+
+        db = Room.databaseBuilder(this, AppDatabase::class.java, "myDB")
+            .allowMainThreadQueries().build()
+        dao = db?.cartaoDao()
+
+        cartoes = dao?.cartoesFindAll()
+
+        val txtSaldo = findViewById<TextView>(R.id.txtSaldo)
+        if (cartoes.isNullOrEmpty()){
+            txtSaldo.setText("R$ 00.0")
+        } else {
+            val totalGasto = dao?.getTotalGasto()
+            txtSaldo.setText("R$ ${totalGasto}")
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityReenter(resultCode, data)
+
+        val txtSaldo = findViewById<TextView>(R.id.txtSaldo)
+        if (cartoes.isNullOrEmpty()){
+            txtSaldo.setText("R$ 00.0")
+        } else {
+            val totalGasto = dao?.getTotalGasto()
+            txtSaldo.setText("R$ ${totalGasto}")
+        }
     }
 
     fun goContas(view: View){

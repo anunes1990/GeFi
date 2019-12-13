@@ -21,4 +21,6 @@ interface CartaoDao {
     @Query("SELECT * FROM cartoes")
     fun cartoesFindAll(): List<Cartao>
 
+    @Query("SELECT sum(valorGasto) from cartoes")
+    fun getTotalGasto():Double
 }
