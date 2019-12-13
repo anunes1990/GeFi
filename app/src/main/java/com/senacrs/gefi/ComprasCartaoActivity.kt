@@ -25,6 +25,8 @@ class ComprasCartaoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_compra_cartao)
+        supportActionBar!!.title = "Cartoes"
+
         db = Room.databaseBuilder(this, AppDatabase::class.java, "myDB")
             .allowMainThreadQueries().build()
         dao = db?.cartaoDao()

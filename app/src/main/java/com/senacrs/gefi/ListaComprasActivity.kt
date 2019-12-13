@@ -28,6 +28,8 @@ class ListaComprasActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_compras)
+        supportActionBar!!.title = "Compras"
+
 
         db = Room.databaseBuilder(this, AppDatabase::class.java, "myDB")
             .allowMainThreadQueries().build()

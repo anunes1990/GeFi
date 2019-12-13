@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddCartaoActivity"></activity>
+        <activity android:name=".ConfigCartaoActivity"></activity>
+        <activity android:name=".AddCartaoActivity" />
         <activity android:name=".AddCompraActivity" />
         <activity android:name=".ListaComprasActivity" />
         <activity android:name=".CartoesActivity" />

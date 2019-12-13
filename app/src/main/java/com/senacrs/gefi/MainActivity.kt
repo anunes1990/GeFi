@@ -10,20 +10,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        supportActionBar!!.title = "GeFi - Gestão Financeira"
     }
 
     fun goContas(view: View){
-        var intent = Intent(this, ComprasCartaoActivity::class.java).apply {
-            putExtra("msg", "Navegação Contas Bombando")
-        }
+        var intent = Intent(this, ComprasCartaoActivity::class.java)
         startActivityForResult(intent, 1)
     }
 
     fun goCartoes(view: View){
-        var intent = Intent(this, CartoesActivity::class.java).apply {
-            putExtra("msg", "Navegação Cartoes Bombando")
-        }
+        var intent = Intent(this, CartoesActivity::class.java)
         startActivityForResult(intent, 1)
     }
 

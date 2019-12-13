@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:orientation="vertical"
-    tools:context=".AddCompraActivity">
+    tools:context=".ConfigCartaoActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Descrição" />
+        android:text="Nome" />
 
     <EditText
-        android:id="@+id/txtDescricao"
+        android:id="@+id/txtNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -23,48 +23,31 @@
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Valor" />
+        android:text="Limite" />
 
     <EditText
-        android:id="@+id/txtValor"
+        android:id="@+id/txtLimite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:ems="10"
-        android:hint="Ex.: 100,00"
         android:inputType="numberDecimal" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Total de Vezes" />
+        android:text="Dia do Vencimento" />
 
     <EditText
-        android:id="@+id/txtVezes"
+        android:id="@+id/txtVencimento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:ems="10"
-        android:hint="Ex.: 5"
-        android:inputType="number" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Parcela Atual" />
-
-    <EditText
-        android:id="@+id/txtParcela"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:ems="10"
-        android:hint="Ex.: 1"
         android:inputType="number" />
 
     <LinearLayout
@@ -72,15 +55,23 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/btnCancelar"
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="cancelar"
-            android:text="Cancelar" />
+            android:onClick="excluir"
+            android:text="Excluir" />
 
         <Button
-            android:id="@+id/btnSalvar"
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="voltar"
+            android:text="Voltar" />
+
+        <Button
+            android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

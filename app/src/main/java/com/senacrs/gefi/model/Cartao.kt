@@ -11,11 +11,11 @@ class Cartao(
     @PrimaryKey (autoGenerate = true)
     val id: Long,
     @ColumnInfo(name = "nome")
-    val nome: String,
+    var nome: String,
     @ColumnInfo(name = "limite")
-    val limite: Double,
+    var limite: Double,
     @ColumnInfo(name = "diaVencimento")
-    val diaVencimento: Int,
+    var diaVencimento: Int,
     @ColumnInfo(name = "valorGasto")
     var valorGasto: Double
 

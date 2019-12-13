@@ -28,6 +28,7 @@ class CartoesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cartoes)
+        supportActionBar!!.title = "Cartoes"
 
         db = Room.databaseBuilder(this, AppDatabase::class.java, "myDB")
             .allowMainThreadQueries().build()
@@ -53,21 +54,32 @@ class CartoesActivity : AppCompatActivity() {
         startActivityForResult(it, 1)
     }
 
-    fun excluirCartao(view: View?){
-        val nome = findViewById<TextView>(R.id.txtNomeCartao).text.toString()
-        Log.d("aqui", nome)
+//    fun excluirCartao(view: View?){
+//        val nome = findViewById<TextView>(R.id.txtNomeCartao).text.toString()
+//        Log.d("aqui", nome)
+//
+//        val elemento = listaCartoes.find{c -> c.nome ==  nome} as Cartao
+//        Log.d("aqui", elemento.id.toString())
+//
+//        dao?.deleteCartao(elemento)
+//        listaCartoes.remove(elemento)
+//        viewAdapter.notifyDataSetChanged()
+//    }
 
-        val elemento = listaCartoes.find{c -> c.nome ==  nome} as Cartao
-        Log.d("aqui", elemento.id.toString())
+    fun config(view: View){
+        var intent = Intent(this, ConfigCartaoActivity::class.java).apply {
+            val nome = view.findViewById<TextView>(R.id.txtNomeCartao).text.toString()
+            val idCartao = listaCartoes.find { c -> c.nome == nome }?.id
 
-        dao?.deleteCartao(elemento)
-        listaCartoes.remove(elemento)
-        viewAdapter.notifyDataSetChanged()
+            Log.d("[id_cartao]", idCartao.toString())
+
+            putExtra("idCartao", idCartao.toString())
+        }
+        startActivityForResult(intent, 2)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         if (requestCode == 1){
             if(resultCode == Activity.RESULT_OK){
                 val cartao = data?.getSerializableExtra("cartao") as Cartao
@@ -75,7 +87,21 @@ class CartoesActivity : AppCompatActivity() {
                 viewAdapter.notifyDataSetChanged()
                 Toast.makeText(this, "Cartão registrado com sucesso!", Toast.LENGTH_SHORT).show()
             }
+        } else if (requestCode == 2){
+            if(resultCode == Activity.RESULT_OK){
+                val cartao = data?.getSerializableExtra("cartao") as Cartao
+                val cartaoOld = listaCartoes.find { c -> c.id == cartao.id }
+                listaCartoes.remove(cartaoOld)
+                listaCartoes.add(cartao)
+                viewAdapter.notifyDataSetChanged()
+                Toast.makeText(this, "Cartão editado com sucesso!", Toast.LENGTH_SHORT).show()
+            } else if(resultCode == 666){
+                val cartao = data?.getSerializableExtra("cartao") as Cartao
+                val cartaoOld = listaCartoes.find { c -> c.id == cartao.id }
+                listaCartoes.remove(cartaoOld)
+                viewAdapter.notifyDataSetChanged()
+                Toast.makeText(this, "Cartão removido com sucesso!", Toast.LENGTH_SHORT).show()
+            }
         }
-
     }
 }

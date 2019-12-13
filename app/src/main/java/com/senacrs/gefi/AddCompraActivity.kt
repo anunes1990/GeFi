@@ -24,6 +24,8 @@ class AddCompraActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_compra)
+        supportActionBar!!.title = "Cadastro de Compra"
+
         idCartao = intent.getStringExtra("idCartao")
 
         db = Room.databaseBuilder(this, AppDatabase::class.java, "myDB")

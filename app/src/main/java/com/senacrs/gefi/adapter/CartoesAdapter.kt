@@ -13,9 +13,11 @@ class CartoesAdapter (private var listaCartoes:ArrayList<Cartao>) : RecyclerView
     class CartoesHolder : RecyclerView.ViewHolder {
         var txtNomeCartao: TextView
         var txtLimite: TextView
+        var txtVencimento: TextView
         constructor(view: View) :  super(view){
             txtNomeCartao = view.findViewById(R.id.txtNomeCartao)
             txtLimite = view.findViewById(R.id.txtLimite)
+            txtVencimento = view.findViewById(R.id.txtVencimento)
         }
     }
 
@@ -29,6 +31,8 @@ class CartoesAdapter (private var listaCartoes:ArrayList<Cartao>) : RecyclerView
     override fun onBindViewHolder(holder: CartoesHolder, position: Int) {
         holder.txtNomeCartao.text = listaCartoes.get(position).nome
         holder.txtLimite.text = listaCartoes.get(position).limite.toString()
+        holder.txtVencimento.text = listaCartoes.get(position).diaVencimento.toString()
+
     }
 
     override fun getItemCount() = listaCartoes.size

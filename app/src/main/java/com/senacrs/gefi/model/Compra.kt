@@ -8,15 +8,15 @@ import java.io.Serializable
 @Entity(tableName = "compras")
 class Compra(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    var id: Long,
     @ColumnInfo(name = "idCartao")
-    val idCartao: Long,
+    var idCartao: Long,
     @ColumnInfo(name = "descricao")
-    val descricao: String,
+    var descricao: String,
     @ColumnInfo(name = "valor")
-    val valor: Double,
+    var valor: Double,
     @ColumnInfo(name = "vezes")
-    val vezes:Int,
+    var vezes:Int,
     @ColumnInfo(name = "parcelaAtual")
-    val parcelaAtual: Int
+    var parcelaAtual: Int
 ): Serializable
