@@ -3,7 +3,9 @@ package com.senacrs.gefi
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +14,7 @@ import androidx.room.Room
 import com.senacrs.gefi.adapter.ComprasAdapter
 import com.senacrs.gefi.daos.CompraDao
 import com.senacrs.gefi.database.AppDatabase
+import com.senacrs.gefi.model.Cartao
 import com.senacrs.gefi.model.Compra
 
 class ListaComprasActivity : AppCompatActivity() {
@@ -59,16 +62,40 @@ class ListaComprasActivity : AppCompatActivity() {
         startActivityForResult(it, 1)
     }
 
+    fun config(view: View){
+        val it = Intent(this, ConfigCompraActivity::class.java).apply {
+            val descricao = view.findViewById<TextView>(R.id.txtDescricao).text.toString()
+            val compra = listaCompras.find { c -> c.descricao == descricao } as Compra
+            putExtra("idCartao", idCartao)
+            putExtra("idCompra", compra.id.toString())
+        }
+        startActivityForResult(it, 2)
+    }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         if (requestCode == 1){
             if(resultCode == Activity.RESULT_OK){
                 val compra = data?.getSerializableExtra("compra") as Compra
                 listaCompras.add(compra)
                 viewAdapter.notifyDataSetChanged()
                 Toast.makeText(this, "Compra registrada com sucesso!", Toast.LENGTH_SHORT).show()
+            }
+        } else if (requestCode == 2){
+            if(resultCode == Activity.RESULT_OK){
+                val compra = data?.getSerializableExtra("compra") as Compra
+                val compraOld = listaCompras.find { c -> c.id == compra.id }
+                listaCompras.remove(compraOld)
+                listaCompras.add(compra)
+                viewAdapter.notifyDataSetChanged()
+                Toast.makeText(this, "Compra editado com sucesso!", Toast.LENGTH_SHORT).show()
+            } else if(resultCode == 666){
+                val compra = data?.getSerializableExtra("compra") as Compra
+                val compraOld = listaCompras.find { c -> c.id == compra.id }
+                listaCompras.remove(compraOld)
+                viewAdapter.notifyDataSetChanged()
+                Toast.makeText(this, "Compra removido com sucesso!", Toast.LENGTH_SHORT).show()
             }
         }
 

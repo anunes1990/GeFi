@@ -31,8 +31,6 @@ class ConfigCartaoActivity : AppCompatActivity() {
         val id = idCartao.toString()
         cartao = dao?.cartoesById(id.toLong())
 
-        Log.d("Cartão", "${cartao?.nome} | ${cartao?.limite} | ${cartao?.diaVencimento}")
-
         val nome = findViewById<EditText>(R.id.txtNome)
         nome.setText(cartao?.nome)
 

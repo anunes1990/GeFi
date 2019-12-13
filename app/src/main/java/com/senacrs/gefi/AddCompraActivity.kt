@@ -50,14 +50,10 @@ class AddCompraActivity : AppCompatActivity() {
 
         val id = compraDao?.insertCompra(compra)
         val retorno = compraDao?.compraById(id!!)
-        Log.d("[add_compra]", "${retorno?.id} | ${retorno?.idCartao} | ${retorno?.valor} | ${retorno?.vezes} | ${retorno?.parcelaAtual}")
-
 
         var cartao = cartaoDao?.cartoesById(retorno?.idCartao!!)
         cartao?.valorGasto = cartao?.valorGasto!! + retorno?.valor!!
         cartaoDao?.updateCartao(cartao)
-        val retornoCartao = cartaoDao?.cartoesById(cartao.id!!)
-        Log.d("[update_cartao]", "${retornoCartao?.id} | ${retornoCartao?.nome} | ${retornoCartao?.limite} | ${retornoCartao?.diaVencimento} | ${retornoCartao?.valorGasto}")
 
         val it = Intent().apply {
             putExtra("compra", retorno)

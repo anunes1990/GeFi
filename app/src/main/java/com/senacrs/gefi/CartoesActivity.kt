@@ -28,7 +28,7 @@ class CartoesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cartoes)
-        supportActionBar!!.title = "Cartoes"
+        supportActionBar!!.title = "Cartões"
 
         db = Room.databaseBuilder(this, AppDatabase::class.java, "myDB")
             .allowMainThreadQueries().build()
@@ -54,25 +54,10 @@ class CartoesActivity : AppCompatActivity() {
         startActivityForResult(it, 1)
     }
 
-//    fun excluirCartao(view: View?){
-//        val nome = findViewById<TextView>(R.id.txtNomeCartao).text.toString()
-//        Log.d("aqui", nome)
-//
-//        val elemento = listaCartoes.find{c -> c.nome ==  nome} as Cartao
-//        Log.d("aqui", elemento.id.toString())
-//
-//        dao?.deleteCartao(elemento)
-//        listaCartoes.remove(elemento)
-//        viewAdapter.notifyDataSetChanged()
-//    }
-
     fun config(view: View){
         var intent = Intent(this, ConfigCartaoActivity::class.java).apply {
             val nome = view.findViewById<TextView>(R.id.txtNomeCartao).text.toString()
             val idCartao = listaCartoes.find { c -> c.nome == nome }?.id
-
-            Log.d("[id_cartao]", idCartao.toString())
-
             putExtra("idCartao", idCartao.toString())
         }
         startActivityForResult(intent, 2)

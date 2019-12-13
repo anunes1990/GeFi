@@ -43,7 +43,6 @@ class AddCartaoActivity : AppCompatActivity() {
         val cartao = Cartao(0, nome, limite.toDouble(), vencimento.toInt(), 0.0)
         val id = dao?.insertCartao(cartao)
         val retorno = dao?.cartoesById(id!!)
-        Log.d("[add_cartao]", "${retorno?.id} | ${retorno?.nome} | ${retorno?.limite} | ${retorno?.diaVencimento} | ${retorno?.valorGasto}")
 
         val it = Intent().apply {
             putExtra("cartao", retorno)

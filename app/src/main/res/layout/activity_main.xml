@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:gravity="center"
-            android:text="ADD Cartão"
+            android:text="Cartões"
             android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
