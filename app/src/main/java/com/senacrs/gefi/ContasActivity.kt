@@ -23,8 +23,6 @@ class ContasActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contas)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = "Gerência de Contas"
 
         //val msg = intent.getStringExtra("msg")
         //val texto = findViewById<TextView>(R.id.txtMsg)
@@ -46,14 +44,11 @@ class ContasActivity : AppCompatActivity() {
     }
 
     fun goExplode(view:View){
-        Log.d("Teste Explode", "CHEGUEI AQUI")
-        Log.d("Teste ID", view.findViewById<TextView>(R.id.txtIdCartao).getText().toString())
         var intent = Intent(this, ContaExplodeActivity::class.java).apply {
             putExtra("idCartao", view.findViewById<TextView>(R.id.txtIdCartao).getText().toString())
         }
         startActivityForResult(intent, 1)
-
-
     }
+
 
 }

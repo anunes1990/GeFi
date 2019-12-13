@@ -9,13 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ContaExplodeActivity"></activity>
-        <activity
-            android:name=".CartoesActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".ContasActivity"
-            android:parentActivityName=".MainActivity" />
+        <activity android:name=".AddCartaoActivity"></activity>
+        <activity android:name=".AddContaActivity" />
+        <activity android:name=".ContaExplodeActivity" />
+        <activity android:name=".CartoesActivity" />
+        <activity android:name=".ContasActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

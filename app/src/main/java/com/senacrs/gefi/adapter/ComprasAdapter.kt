@@ -1,15 +1,12 @@
 package com.senacrs.gefi.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.senacrs.gefi.R
-import com.senacrs.gefi.model.Cartao
 import com.senacrs.gefi.model.Compra
-import com.senacrs.gefi.model.Conta
 
 class ComprasAdapter (private var listaCompras:ArrayList<Compra>) : RecyclerView.Adapter<ComprasAdapter.ComprasHolder>(){
 

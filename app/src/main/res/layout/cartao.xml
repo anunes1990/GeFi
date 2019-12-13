@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -45,16 +46,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="5"
-            android:gravity="center_vertical">
+            android:gravity="center">
 
             <Button
                 android:id="@+id/btnDeletar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:background="#FF0000"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:text="Excluir Cartão"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                tools:layout_conversion_absoluteHeight="48dp"
+                tools:layout_conversion_absoluteWidth="372dp"
+                tools:layout_editor_absoluteX="20dp"
+                tools:layout_editor_absoluteY="171dp" />
         </LinearLayout>
     </LinearLayout>
 
