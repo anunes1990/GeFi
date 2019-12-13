@@ -1,6 +1,5 @@
 package com.senacrs.gefi.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,9 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.senacrs.gefi.R
 import com.senacrs.gefi.model.Cartao
-import com.senacrs.gefi.model.Conta
 
-class ContasAdapter (private var listaContas:ArrayList<Conta>) : RecyclerView.Adapter<ContasAdapter.ContasHolder>(){
+class ContasAdapter (private var listaContas:ArrayList<Cartao>) : RecyclerView.Adapter<ContasAdapter.ContasHolder>(){
 
     class ContasHolder : RecyclerView.ViewHolder {
         var txtIdCartao: TextView
@@ -33,10 +31,10 @@ class ContasAdapter (private var listaContas:ArrayList<Conta>) : RecyclerView.Ad
     }
 
     override fun onBindViewHolder(holder: ContasHolder, position: Int) {
-        holder.txtIdCartao.text = listaContas.get(position).idCartao.toString()
+        holder.txtIdCartao.text = listaContas.get(position).id.toString()
         holder.txtNomeCartao.text = listaContas.get(position).nome
         holder.txtVencimento.text = listaContas.get(position).diaVencimento.toString()
-        holder.txtValor.text = listaContas.get(position).valor.toString()
+        holder.txtValor.text = listaContas.get(position).valorGasto.toString()
     }
 
     override fun getItemCount() = listaContas.size

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AddCartaoActivity"></activity>
-        <activity android:name=".AddContaActivity" />
+        <activity android:name=".AddCompraActivity" />
         <activity android:name=".ContaExplodeActivity" />
         <activity android:name=".CartoesActivity" />
         <activity android:name=".ContasActivity" />

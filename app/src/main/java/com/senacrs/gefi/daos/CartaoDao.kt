@@ -7,18 +7,18 @@ import com.senacrs.gefi.model.Cartao
 interface CartaoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCartao(cartao: Cartao)
+    fun insertCartao(cartao: Cartao): Long
 
     @Update
-    fun updateCartao(cartao:Cartao)
+    fun updateCartao(cartao: Cartao): Int
 
     @Delete
-    fun deleteCartao(cartao:Cartao)
+    fun deleteCartao(vararg cartao: Cartao)
 
     @Query("SELECT * FROM cartoes WHERE id == :id")
-    fun getCartaoId(id: Int): Cartao
+    fun cartoesById(id: Long): Cartao?
 
     @Query("SELECT * FROM cartoes")
-    fun getAllCartoes(): ArrayList<Cartao>
+    fun cartoesFindAll(): List<Cartao>
 
 }
