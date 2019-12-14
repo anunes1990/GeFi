@@ -3,6 +3,7 @@ package com.senacrs.gefi
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -55,8 +56,11 @@ class ComprasCartaoActivity : AppCompatActivity() {
     }
 
     fun goExplode(view:View){
-        var intent = Intent(this, ListaComprasActivity::class.java).apply {
-            putExtra("idCartao", view.findViewById<TextView>(R.id.txtIdCartao).getText().toString())
+        val intent = Intent(this, ListaComprasActivity::class.java).apply {
+            val nome = view.findViewById<TextView>(R.id.txtNomeCartao).getText().toString()
+            val cartao = listaCartoes.find { c -> c.nome ==  nome }
+            Log.d("id_cartao", cartao?.id.toString())
+            putExtra("idCartao", cartao?.id.toString())
         }
         startActivityForResult(intent, 1)
     }

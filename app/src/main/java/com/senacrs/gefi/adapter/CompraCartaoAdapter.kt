@@ -11,15 +11,15 @@ import com.senacrs.gefi.model.Cartao
 class CompraCartaoAdapter (private var listaContas:ArrayList<Cartao>) : RecyclerView.Adapter<CompraCartaoAdapter.ContasHolder>(){
 
     class ContasHolder : RecyclerView.ViewHolder {
-        var txtIdCartao: TextView
         var txtNomeCartao: TextView
         var txtVencimento: TextView
         var txtValor: TextView
+        var txtLimiteDisponivel: TextView
         constructor(view: View) :  super(view){
-            txtIdCartao = view.findViewById(R.id.txtIdCartao)
             txtNomeCartao = view.findViewById(R.id.txtNomeCartao)
             txtVencimento = view.findViewById(R.id.txtVencimento)
             txtValor = view.findViewById(R.id.txtValor)
+            txtLimiteDisponivel = view.findViewById(R.id.txtLimiteDisponivel)
         }
     }
 
@@ -31,10 +31,10 @@ class CompraCartaoAdapter (private var listaContas:ArrayList<Cartao>) : Recycler
     }
 
     override fun onBindViewHolder(holder: ContasHolder, position: Int) {
-        holder.txtIdCartao.text = listaContas.get(position).id.toString()
         holder.txtNomeCartao.text = listaContas.get(position).nome
         holder.txtVencimento.text = listaContas.get(position).diaVencimento.toString()
         holder.txtValor.text = listaContas.get(position).valorGasto.toString()
+        holder.txtLimiteDisponivel.text = listaContas.get(position).limiteDisponivel.toString()
     }
 
     override fun getItemCount() = listaContas.size

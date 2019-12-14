@@ -40,7 +40,7 @@ class AddCartaoActivity : AppCompatActivity() {
         val limite = txtLimite.text.toString()
         val vencimento = txtVencimento.text.toString()
 
-        val cartao = Cartao(0, nome, limite.toDouble(), vencimento.toInt(), 0.0)
+        val cartao = Cartao(0, nome, limite.toDouble(),limite.toDouble(), vencimento.toInt(), 0.0, 0.0)
         val id = dao?.insertCartao(cartao)
         val retorno = dao?.cartoesById(id!!)
 

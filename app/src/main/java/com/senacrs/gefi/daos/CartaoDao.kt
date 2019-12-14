@@ -23,4 +23,8 @@ interface CartaoDao {
 
     @Query("SELECT sum(valorGasto) from cartoes")
     fun getTotalGasto():Double
+
+    @Query("SELECT sum(valorMes) from cartoes")
+    fun getTotalMes():Double
+
 }

@@ -53,6 +53,9 @@ class AddCompraActivity : AppCompatActivity() {
 
         var cartao = cartaoDao?.cartoesById(retorno?.idCartao!!)
         cartao?.valorGasto = cartao?.valorGasto!! + retorno?.valor!!
+        cartao.limiteDisponivel = cartao.limiteDisponivel - retorno.valor
+        cartao.valorMes = cartao.valorMes + (retorno.valor / retorno.vezes)
+
         cartaoDao?.updateCartao(cartao)
 
         val it = Intent().apply {

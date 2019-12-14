@@ -59,9 +59,13 @@ class ConfigCompraActivity : AppCompatActivity() {
     fun excluir(view: View?){
         val saldoAntigo = cartao?.valorGasto
         val debitoAntigo = compra?.valor
-        var novoSaldo = saldoAntigo!! - debitoAntigo!!
+        val novoSaldo = saldoAntigo!! - debitoAntigo!!
+        val novoLimiteDisponivel = cartao?.limiteDisponivel!! + compra?.valor!!
+        val novoValorMes = cartao?.valorMes!! - (compra?.valor!! / compra?.vezes!!)
 
         cartao?.valorGasto = novoSaldo
+        cartao?.limiteDisponivel = novoLimiteDisponivel
+        cartao?.valorMes = novoValorMes
 
         daoCompra?.deleteCompra(compra as Compra)
         daoCartao?.updateCartao(cartao as Cartao)
@@ -84,7 +88,8 @@ class ConfigCompraActivity : AppCompatActivity() {
 
         val saldoAntigo = cartao?.valorGasto
         val debitoAntigo = compra?.valor
-        var novoSaldo = saldoAntigo!! - debitoAntigo!!
+        val vezesAntigo = compra?.vezes
+        val novoSaldo = saldoAntigo!! - debitoAntigo!!
 
         val txtDescricao = findViewById<EditText>(R.id.txtDescricao).text.toString()
         compra?.descricao = txtDescricao
@@ -98,6 +103,15 @@ class ConfigCompraActivity : AppCompatActivity() {
 
         val txtParcela = findViewById<EditText>(R.id.txtParcela).text.toString()
         compra?.parcelaAtual = txtParcela.toInt()
+
+
+        //Melhorar
+
+        cartao?.limiteDisponivel = cartao?.limiteDisponivel!! + debitoAntigo
+        cartao?.limiteDisponivel = cartao?.limiteDisponivel!! - compra?.valor!!
+
+        cartao?.valorMes = cartao?.valorMes!! - (debitoAntigo / vezesAntigo!!)
+        cartao?.valorMes = cartao?.valorMes!! + (compra?.valor!! / compra?.vezes!!)
 
         daoCompra?.updateCompra(compra as Compra)
         daoCartao?.updateCartao(cartao as Cartao)

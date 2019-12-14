@@ -14,9 +14,13 @@ class Cartao(
     var nome: String,
     @ColumnInfo(name = "limite")
     var limite: Double,
+    @ColumnInfo(name = "limiteDisponivel")
+    var limiteDisponivel: Double,
     @ColumnInfo(name = "diaVencimento")
     var diaVencimento: Int,
     @ColumnInfo(name = "valorGasto")
-    var valorGasto: Double
+    var valorGasto: Double,
+    @ColumnInfo(name = "valorMes")
+    var valorMes: Double
 
  ): Serializable

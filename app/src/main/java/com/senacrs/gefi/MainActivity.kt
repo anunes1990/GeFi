@@ -27,11 +27,16 @@ class MainActivity : AppCompatActivity() {
         cartoes = dao?.cartoesFindAll()
 
         val txtSaldo = findViewById<TextView>(R.id.txtSaldo)
+        val txtTotalMes = findViewById<TextView>(R.id.txtTotalMes)
+
         if (cartoes.isNullOrEmpty()){
             txtSaldo.setText("R$ 00.0")
+            txtTotalMes.setText("R$ 00.0")
         } else {
             val totalGasto = dao?.getTotalGasto()
             txtSaldo.setText("R$ ${totalGasto}")
+            val totalMes = dao?.getTotalMes()
+            txtTotalMes.setText("R$ ${totalMes}")
         }
     }
 
@@ -39,11 +44,16 @@ class MainActivity : AppCompatActivity() {
         super.onActivityReenter(resultCode, data)
 
         val txtSaldo = findViewById<TextView>(R.id.txtSaldo)
+        val txtTotalMes = findViewById<TextView>(R.id.txtTotalMes)
+
         if (cartoes.isNullOrEmpty()){
             txtSaldo.setText("R$ 00.0")
+            txtTotalMes.setText("R$ 00.0")
         } else {
             val totalGasto = dao?.getTotalGasto()
             txtSaldo.setText("R$ ${totalGasto}")
+            val totalMes = dao?.getTotalMes()
+            txtTotalMes.setText("R$ ${totalMes}")
         }
     }
 
